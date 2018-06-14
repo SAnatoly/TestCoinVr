@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -25,5 +26,17 @@ public class GameController : MonoBehaviour
     {
         scores += score;
         ScoreText.text = scores.ToString();
+    }
+
+    public void Lose()
+    {
+        Debug.Log("HDytdhh");
+        StartCoroutine(Restart());
+    }
+
+    IEnumerator Restart()
+    {
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
